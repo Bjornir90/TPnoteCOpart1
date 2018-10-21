@@ -17,9 +17,14 @@ public class AutreDisque implements Empilable {
 
 	@Override
 	public int compareTo(Object o) {
-		AutreDisque d = (AutreDisque) o;
-		if (taille < d.taille) return -1;
-		else if (taille == d.taille) return 0;
+		Empilable d = (Empilable) o;
+		if (taille < d.getTaille()) return -1;
+		else if (taille == d.getTaille()) return 0;
 		else return 1;
+	}
+
+	@Override
+	public int getTaille() {
+		return taille;
 	}
 }

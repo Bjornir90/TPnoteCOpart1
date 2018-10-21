@@ -14,7 +14,26 @@ public class Tour extends Pile {
     // par empiler le plus gros.
     public void remplir(int nb) throws ErreurPile {
 		for(; nb > 0; nb--) {
-			Empilable e;
+			Empilable e = new Empilable() {
+				int taille;
+				@Override
+				public void init(int taille) {
+					this.taille = taille;
+				}
+
+				@Override
+				public int compareTo(Object o) {
+					Empilable d = (Empilable) o;
+					if (taille < d.getTaille()) return -1;
+					else if (taille == d.getTaille()) return 0;
+					else return 1;
+				}
+
+				@Override
+				public int getTaille(){
+					return taille;
+				}
+			};
 			e.init(nb);
 			this.empiler(e);
 		}

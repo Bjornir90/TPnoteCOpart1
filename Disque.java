@@ -14,9 +14,14 @@ public class Disque implements Empilable {
 
 	@Override
 	public int compareTo(Object v) {
-	Disque d = (Disque) v;
-	if (val < d.val) return -1;
-	else if (val == d.val) return 0;
+	Empilable d = (Empilable) v;
+	if (val < d.getTaille()) return -1;
+	else if (val == d.getTaille()) return 0;
 	else return 1;
     }
+
+	@Override
+	public int getTaille() {
+		return val;
+	}
 }
