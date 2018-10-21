@@ -1,17 +1,19 @@
 package hanoi1;
 
-public class Disque implements Comparable {
-    private int val;
-
-    public Disque (int v) {
-	val = v;
-    }
+public class Disque implements Empilable {
+    protected int val;
 
     public String toString() {
 	return "hanoi1.Disque[" + val + "]";
     }
 
-    public int compareTo(Object v) {
+	@Override
+	public void init(int taille) {
+		val = taille;
+	}
+
+	@Override
+	public int compareTo(Object v) {
 	Disque d = (Disque) v;
 	if (val < d.val) return -1;
 	else if (val == d.val) return 0;

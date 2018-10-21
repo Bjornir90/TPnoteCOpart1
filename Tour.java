@@ -13,14 +13,22 @@ public class Tour extends Pile {
     // prendre en parametre le nombre de disques a empiler, et on commencera
     // par empiler le plus gros.
     public void remplir(int nb) throws ErreurPile {
-	for(; nb > 0; nb--) 
-	    this.empiler(new Disque(nb));
+		for(; nb > 0; nb--) {
+			Empilable e;
+			e.init(nb);
+			this.empiler(e);
+		}
     }
 
     // Redéfinir empiler de hanoi1.Pile de façon à contrôler qu'on n'empile
     // qu'une instance de hanoi1.Disque, et de taille suffisamment grande.
+	@Override
     public void empiler(Object v) throws ErreurPile {
+        if(v instanceof Empilable){
+	        super.empiler(v);
+        } else {
+        	throw new ErreurTour("L'objet à empiler n'implémente pas Empilable");
+        }
 
-        throw new UnsupportedOperationException();
     }
 }

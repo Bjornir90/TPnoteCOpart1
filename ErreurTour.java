@@ -1,5 +1,8 @@
 package hanoi1;
 
-public class ErreurTour {
+public class ErreurTour extends ErreurPile{
 
+	public ErreurTour(String msg){
+		super(msg);
+	}
 }
